@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Despertador Interactivo</title>
+</head>
+<body>
+    <h1>Despertador Interactivo</h1>
+    <p>Presiona el botón para despertar a Alan:</p>
+    <button onclick="sendRequest()">¡Despertar!</button>
+    <script>
+        function sendRequest() {
+            fetch('http://niggames.duckdns.org:8080', { method: 'POST' })
+                .then(response => {
+                    if (response.ok) {
+                        alert('¡Solicitud enviada exitosamente!');
+                    } else {
+                        alert('Hubo un problema al enviar la solicitud.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('No se pudo enviar la solicitud.');
+                });
+        }
+    </script>
+</body>
+</html>
